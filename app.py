@@ -42,7 +42,17 @@ def index():
     else:
         accounts = BankAccount.query.order_by(BankAccount.id).all()
         return render_template('index.html', accounts=accounts)
- 
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    account_to_delete = BankAccount.query.get_or_404(id)
+
+    try:
+        db.session.delete(account_to_delete)
+        db.session.commit()
+        return redirect('/') 
+    except:
+        return 'There was a problem deleting that account'
 
 if __name__ == "__main__":
     app.run(debug=True)
