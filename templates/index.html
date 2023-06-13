@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Cantello National Bank</title>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Cantello National Bank Customers</h1>
+        <h3>Bank Teller View</h3>
+
+        <form actions="/" method="POST">
+            <input type="text" placeholder="First Name" name="first_name" id="first_name">
+            <input type="text" placeholder="Last Name" name="last_name" id="last_name">
+            <input type="text" placeholder="email" name="email" id="email">
+            <input type="text" placeholder="Account Type" name="account_type" id="account_type">
+            <input type="integer" placeholder="Account Balance" name="account_balance" id="account_balance">
+            <input type="submit" value="Add Account">
+        </form>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Account Type</th>
+                <th>Account Balance</th>
+                <th>Data Created</th>
+                <th>Actions</th>
+            </tr>
+            {% for account in accounts %}
+                <tr>
+                    <td>{{ account.id }}</td>
+                    <td>{{ account.first_name }}</td>
+                    <td>{{ account.last_name }}</td>
+                    <td>{{ account.email }}</td>
+                    <td>{{ account.account_type }}</td>
+                    <td>{{ account.account_balance }}</td>
+                    <td>{{ account.date_created }}</td>
+                    <td>
+                        <a href="">Update</a>
+                        <br>
+                        <a href="">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+{% endblock %}
