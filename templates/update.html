@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Cantello National Bank</title>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Cantello National Bank<br>
+        Account Update Page</h1>
+        <h3>Bank Teller View</h3>
+        
+
+        <form action="/update/{{account.id}}" method="POST">
+            <input type="hidden" name="id" id="id" value="{{account.id}}">
+            <input type="text" name="first_name" id="first_name" value="{{account.first_name}}">
+            <input type="text" name="last_name" id="last_name" value="{{account.last_name}}">
+            <input type="text" name="email" id="email" value="{{account.email}}">
+            <input type="text" name="account_type" id="account_type" value="{{account.account_type}}">
+            <input type="integer" name="account_balance" id="account_balance" value="{{account.account_balance}}">
+            <input type="submit" value="Update Account">
+        </form>
+    </div>
+    
+{% endblock %}

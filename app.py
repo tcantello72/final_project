@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -54,5 +54,29 @@ def delete(id):
     except:
         return 'There was a problem deleting that account'
 
+@app.route('/update/<int:id>', methods=['POST', 'GET'])
+def update(id):
+    account = BankAccount.query.get_or_404(id)
+
+    if request.method == 'POST':
+        account = BankAccount(
+            id = request.form['id'],
+            first_name = request.form['first_name'],
+            last_name = request.form['last_name'],
+            email = request.form['email'],
+            account_type = request.form['account_type'],
+            account_balance = request.form['account_balance'],
+            )
+
+        try:
+            db.session.merge(account)
+            db.session.commit()
+            return redirect('/')
+        
+        except:
+            return 'There was an issue updating the account'
+    else:
+        return render_template('update.html', account = account)
+    
 if __name__ == "__main__":
     app.run(debug=True)
