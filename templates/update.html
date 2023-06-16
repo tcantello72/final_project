@@ -1,25 +1,69 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <title>Cantello National Bank</title>
+    <title>Cantello National Bank Account Update Page Teller View</title>
 {% endblock %}
 
 {% block body %}
     <div class="content">
-        <h1>Cantello National Bank<br>
-        Account Update Page</h1>
-        <h3>Bank Teller View</h3>
-        
-
-        <form action="/update/{{account.id}}" method="POST">
-            <input type="hidden" name="id" id="id" value="{{account.id}}">
-            <input type="text" name="first_name" id="first_name" value="{{account.first_name}}">
-            <input type="text" name="last_name" id="last_name" value="{{account.last_name}}">
-            <input type="text" name="email" id="email" value="{{account.email}}">
-            <input type="text" name="account_type" id="account_type" value="{{account.account_type}}">
-            <input type="integer" name="account_balance" id="account_balance" value="{{account.account_balance}}">
-            <input type="submit" value="Update Account">
-        </form>
-    </div>
-    
+        <h1>Cantello National Bank</h1>
+        <br>
+        <br>
+        <table class="tableAdd">
+            <tr>
+                <th colspan="5" class="tableCellAdd">Update an Account</th>
+            </tr>
+            <tr>
+                <td class="tableCellAdd">First Name</td>
+                <td class="tableCellAdd">Last Name</td>
+                <td class="tableCellAdd">Email</td>
+                <td class="tableCellAdd">Account Type</td>
+                <td class="tableCellAdd">Account Balance</td>
+            </tr>
+            <tr>
+                <form action="/update/{{account.id}}" method="POST">
+                    <input type="hidden" name="id" id="id" value="{{account.id}}" required>
+                    <td class="tableCellAdd">
+                        <input type="text" name="first_name" id="first_name" value="{{account.first_name}}" required>
+                    <td class="tableCellAdd">
+                        <input type="text" name="last_name" id="last_name" value="{{account.last_name}}" required>
+                    </td>
+                    <td class="tableCellAdd">
+                        <input type="text" name="email" id="email" value="{{account.email}}" required>
+                    </td>
+                    <td class="tableCellAdd">
+                        <input type="text" name="account_type" id="account_type" value="{{account.account_type}}" required>
+                    </td>
+                    <td class="tableCellAdd">
+                        <input type="integer" name="account_balance" id="account_balance" value="{{account.account_balance}}" required>
+                    </td>
+            </tr>
+            <tr>
+                    <td colspan="5" class="tableCellAdd">
+                        <input type="submit" value="Update Account">
+                    </td>
+                </form>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <th colspan="4">Account Balance Update</th>
+            </tr>
+            <tr>
+                <td>Starting Balance</td>
+                <td>Withdraw</td>
+                <td>Deposit</td>
+                <td>New Balance</td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            
+        </table>
+    </div>  
 {% endblock %}

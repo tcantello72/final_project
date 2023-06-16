@@ -17,8 +17,8 @@ class BankAccount(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        # return "BankAccount('{self.id}', '{self.first_name}', '{self.Last_name}', '{self.email}', '{self.account_type}', {self.account_balance}, {self.date_created})" 
         return '<Account %r>' % self.id
+    
 with app.app_context():
     db.create_all()
 
@@ -43,6 +43,7 @@ def index():
         accounts = BankAccount.query.order_by(BankAccount.id).all()
         return render_template('index.html', accounts=accounts)
 
+    
 @app.route('/delete/<int:id>')
 def delete(id):
     account_to_delete = BankAccount.query.get_or_404(id)
