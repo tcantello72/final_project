@@ -58,6 +58,24 @@ td {
     border: none;
 }
 
+.tableSearch {
+    background-color: #e1e5f2;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.tableCellSearch {
+    border: none;
+}
+
 h1 {
     text-align: center;
     font-style: italic;

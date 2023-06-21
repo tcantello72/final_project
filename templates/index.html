@@ -28,10 +28,17 @@
                         <input type="text" name="last_name" id="last_name" required>
                     </td>
                     <td class="tableCellAdd">
-                        <input type="text" name="email" id="email" required>
+                        <input type="email" name="email" id="email" required>
                     </td>
                     <td class="tableCellAdd">
-                        <input type="text" name="account_type" id="account_type" required>
+                        <select name="account_type" id="account_type" required>
+                            <option>Choose a type of account..</option>
+                            <option value = "checking">Checking</option>
+                            <option value = "savings">Savings</option>
+                            <option value = "cd">CD</option>
+                            <option value = "homeloan">Home Loan</option>
+                            <option value = "carloan">Car Loan</option>
+                        </select>
                     </td>
                     <td class="tableCellAdd">
                         <input type="integer" name="account_balance" id="account_balance" required>
@@ -45,45 +52,41 @@
             </tr>
         </table>
         <br>
-        <br>
-        <br>
         {% if accounts|length < 1 %}
         <h3>There are no accounts. Please create one above.</h3>
         {% else %}
-            <table>
-              
-                <tr>
-                    <th colspan="8">Account List</th>
-                </tr>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Account Type</th>
-                    <th>Account Balance</th>
-                    <th>Data Created</th>
-                    <th>Actions</th>
-                </tr>
-        
+            <table class="table-sortable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Account Type</th>
+                        <th>Account Balance</th>
+                        <th>Data Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 {% for account in accounts %}
-                <tr>
-                    <td>{{ account.id }}</td>
-                    <td>{{ account.first_name }}</td>
-                    <td>{{ account.last_name }}</td>
-                    <td>{{ account.email }}</td>
-                    <td>{{ account.account_type }}</td>
-                    <td>{{ account.account_balance }}</td>
-                    <td>{{ account.date_created }}</td>
-                    <td>
-                        <a href="/update/{{account.id}}">Update</a>
-                        <br>
-                        <a href="/delete/{{account.id}}">Delete</a>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>{{ account.id }}</td>
+                        <td>{{ account.first_name }}</td>
+                        <td>{{ account.last_name }}</td>
+                        <td>{{ account.email }}</td>
+                        <td>{{ account.account_type }}</td>
+                        <td>{{ account.account_balance }}</td>
+                        <td>{{ account.date_created }}</td>
+                        <td>
+                            <a href="/update/{{account.id}}">Update</a>
+                            <br>
+                            <a href="/delete/{{account.id}}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
                 {% endfor %}
             </table>
         {% endif %}
     </div>
-    
 {% endblock %}

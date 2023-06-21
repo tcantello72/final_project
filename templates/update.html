@@ -23,21 +23,13 @@
             <tr>
                 <form action="/update/{{account.id}}" method="POST">
                     <input type="hidden" name="id" id="id" value="{{account.id}}" required>
-                    <td class="tableCellAdd">
-                        <input type="text" name="first_name" id="first_name" value="{{account.first_name}}" required>
-                    <td class="tableCellAdd">
-                        <input type="text" name="last_name" id="last_name" value="{{account.last_name}}" required>
+                    <td class="tableCellAdd"><input type="text" name="first_name" id="first_name" value="{{account.first_name}}" required></td>
+                    <td class="tableCellAdd"><input type="text" name="last_name" id="last_name" value="{{account.last_name}}" required></td>
+                    <td class="tableCellAdd"><input type="email" name="email" id="email" value="{{account.email}}" required></td>
+                    <td class="tableCellAdd"><input type="text" name="account_type" id="account_type" value="{{account.account_type}}" required>
+                    <td class="tableCellAdd" colspan="4"><input type="text" name="account_balance" id="account_balance" value="{{account.account_balance}}" required></td>
                     </td>
-                    <td class="tableCellAdd">
-                        <input type="text" name="email" id="email" value="{{account.email}}" required>
-                    </td>
-                    <td class="tableCellAdd">
-                        <input type="text" name="account_type" id="account_type" value="{{account.account_type}}" required>
-                    </td>
-                    <td class="tableCellAdd">
-                        <input type="integer" name="account_balance" id="account_balance" value="{{account.account_balance}}" required>
-                    </td>
-            </tr>
+            </tr> 
             <tr>
                     <td colspan="5" class="tableCellAdd">
                         <input type="submit" value="Update Account">
@@ -45,25 +37,6 @@
                 </form>
             </tr>
         </table>
-        <br>
-        <br>
-        <table>
-            <tr>
-                <th colspan="4">Account Balance Update</th>
-            </tr>
-            <tr>
-                <td>Starting Balance</td>
-                <td>Withdraw</td>
-                <td>Deposit</td>
-                <td>New Balance</td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            
-        </table>
+        <p><center><a href = "../">Back to List of Accounts</a></center></p>
     </div>  
 {% endblock %}

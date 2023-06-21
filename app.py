@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -43,7 +43,6 @@ def index():
         accounts = BankAccount.query.order_by(BankAccount.id).all()
         return render_template('index.html', accounts=accounts)
 
-    
 @app.route('/delete/<int:id>')
 def delete(id):
     account_to_delete = BankAccount.query.get_or_404(id)
@@ -54,7 +53,7 @@ def delete(id):
         return redirect('/') 
     except:
         return 'There was a problem deleting that account'
-
+ 
 @app.route('/update/<int:id>', methods=['POST', 'GET'])
 def update(id):
     account = BankAccount.query.get_or_404(id)
@@ -67,7 +66,7 @@ def update(id):
             email = request.form['email'],
             account_type = request.form['account_type'],
             account_balance = request.form['account_balance'],
-            )
+        )
 
         try:
             db.session.merge(account)
@@ -78,6 +77,7 @@ def update(id):
             return 'There was an issue updating the account'
     else:
         return render_template('update.html', account = account)
-    
+
+
 if __name__ == "__main__":
     app.run(debug=True)
